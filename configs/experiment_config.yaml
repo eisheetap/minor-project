@@ -1,0 +1,61 @@
+run:
+  run_name: "baseline_run"
+  seed: 123
+  output_dir: "outputs"
+  log_dir: "outputs/logs"
+  metrics_dir: "outputs/metrics"
+  plots_dir: "outputs/plots"
+  save_raw_data: true
+
+data:
+  source: "synthetic"         # options: synthetic, csv, json
+  synthetic:
+    length: 12000
+    region_seed_offset: 1
+  external:
+    region_a_path: null       # e.g., DATA/region_A.csv
+    region_b_path: null
+    timestamp_col: "timestamp"
+  features:
+    columns: ["temperature", "humidity", "rainfall", "evapotranspiration", "soil_moisture"]
+    target: "next_day_soil_moisture"
+
+preprocessing:
+  train_ratio: 0.7
+  window_size: 7
+  scaler: "standard"          # reserved for future scaler choices
+  validate_leakage: true
+
+model:
+  type: "lstm"                # options: rf, linear, lstm
+  rf:
+    n_estimators: 300
+    max_depth: null
+  linear:
+    fit_intercept: true
+    n_jobs: -1
+  lstm:
+    hidden_size: 64
+    num_layers: 2
+    dropout: 0.2
+
+training:
+  batch_size: 64
+  epochs: 25
+  lr: 0.001
+  val_ratio: 0.15
+
+transfer:
+  enabled: true
+  finetune_fraction: 0.1
+  freeze_backbone: false
+  lr: 0.0005
+  epochs: 10
+  batch_size: 32
+
+evaluation:
+  runs: 5                     # for statistical tests
+  noise_std: 0.1
+  missing_frac: 0.05
+  degradation_baseline: "A"   # train region
+  target_region: "B"          # cross-domain target

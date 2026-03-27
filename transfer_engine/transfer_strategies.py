@@ -1,25 +1,17 @@
-"""Transfer learning routines for fine-tuning the LSTM on Region B."""
+"""Transfer learning strategies for LSTM models."""
 from __future__ import annotations
 
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
 
-from models import LSTMRegressor, set_global_seed
-
-GLOBAL_SEED = 123
+from training_engine.reproducibility import set_global_seed
 
 
-def _build_loaders(
-    X_train: np.ndarray,
-    y_train: np.ndarray,
-    X_val: np.ndarray,
-    y_val: np.ndarray,
-    batch_size: int,
-) -> Tuple[DataLoader, DataLoader]:
+def _build_loaders(X_train: np.ndarray, y_train: np.ndarray, X_val: np.ndarray, y_val: np.ndarray, batch_size: int):
     train_ds = TensorDataset(torch.tensor(X_train, dtype=torch.float32), torch.tensor(y_train, dtype=torch.float32))
     val_ds = TensorDataset(torch.tensor(X_val, dtype=torch.float32), torch.tensor(y_val, dtype=torch.float32))
     train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
@@ -28,7 +20,7 @@ def _build_loaders(
 
 
 def fine_tune_lstm(
-    model: LSTMRegressor,
+    model: torch.nn.Module,
     X_train: np.ndarray,
     y_train: np.ndarray,
     X_val: np.ndarray,
@@ -37,14 +29,9 @@ def fine_tune_lstm(
     epochs: int = 10,
     batch_size: int = 64,
     freeze_backbone: bool = False,
-    seed: int = GLOBAL_SEED,
+    seed: int = 123,
     device: str | None = None,
 ) -> Dict[str, List[float]]:
-    """
-    Fine-tune a pretrained LSTM on limited target data.
-
-    freeze_backbone=True freezes the LSTM layers and updates only the head.
-    """
     set_global_seed(seed)
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)

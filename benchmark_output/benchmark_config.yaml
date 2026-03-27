@@ -51,7 +51,7 @@ run:
   seed: 123
 training:
   batch_size: 128
-  early_stopping_patience: 5
+  early_stopping_patience: 8
   epochs: 1
   grad_clip: 1.0
   lr: 0.001

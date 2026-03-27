@@ -44,11 +44,11 @@ model:
 
 training:
   batch_size: 64
-  epochs: 25
+  epochs: 40
   lr: 0.001
   val_ratio: 0.15
   grad_clip: 1.0
-  early_stopping_patience: 5
+  early_stopping_patience: 8
 
 transfer:
   enabled: true
@@ -63,7 +63,7 @@ transfer:
   grad_clip: 1.0
 
 evaluation:
-  runs: 5                     # for statistical tests
+  runs: 10                    # for stronger statistical confidence
   noise_std: 0.1
   missing_frac: 0.05
   degradation_baseline: "A"   # train region

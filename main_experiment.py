@@ -30,6 +30,8 @@ from preprocessing import (
 )
 from transfer_learning import fine_tune_lstm
 
+DATA_DIR = Path("DATA")
+
 
 def temporal_val_split(X: np.ndarray, y: np.ndarray, val_ratio: float = 0.15) -> Tuple[np.ndarray, ...]:
     val_size = max(1, int(len(X) * val_ratio))
@@ -45,9 +47,18 @@ def scale_with_existing(df: pd.DataFrame, scaler) -> pd.DataFrame:
 def run_experiment() -> Dict[str, any]:
     set_global_seed(GLOBAL_SEED)
     OUT_DIR.mkdir(exist_ok=True)
+    DATA_DIR.mkdir(exist_ok=True)
 
     # Generate synthetic data
     datasets = generate_regions(length=12_000, seed=GLOBAL_SEED)
+    # Persist raw synthetic data for inspection/reuse
+    for key, df in datasets.items():
+        df.to_csv(DATA_DIR / f"region_{key}.csv", index=False)
+        df.to_json(
+            DATA_DIR / f"region_{key}.json",
+            orient="records",
+            date_format="iso",
+        )
     train_ratio = 0.7
     window_size = 7
 

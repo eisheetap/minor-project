@@ -1,0 +1,47 @@
+2026-03-28 00:39:26,001 [INFO] Logging to outputs\logs\baseline_run_20260327_190926.log
+2026-03-28 00:39:26,469 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:39:26,469 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:39:26,471 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:39:26,491 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:39:26,492 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:39:26,493 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:39:26,494 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:39:40,386 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:39:40,387 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:39:40,389 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:39:40,424 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:39:40,426 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:39:40,427 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:39:40,428 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:39:53,396 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:39:53,398 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:39:53,400 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:39:53,432 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:39:53,433 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:39:53,433 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:39:53,433 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:40:07,343 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:40:07,343 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:40:07,343 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:40:07,380 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:40:07,383 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:40:07,385 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:40:07,385 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:40:23,907 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:40:23,907 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:40:23,907 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:40:23,941 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:40:23,942 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:40:23,942 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:40:23,942 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:40:37,944 [INFO] Cross-region metrics (mean): {'mean_RMSE': np.float64(12.135586894431984), 'mean_MAE': np.float64(9.437380877415722), 'mean_R2': np.float64(0.07636110833315471), 'std_RMSE': np.float64(0.07625113205801905), 'std_MAE': np.float64(0.05084270653590286), 'std_R2': np.float64(0.011627238029302822)}
+2026-03-28 00:40:37,944 [INFO] Transfer metrics (mean): {'mean_RMSE': np.float64(0.38133788092004595), 'mean_MAE': np.float64(0.23797698328274697), 'mean_R2': np.float64(0.8803009987252486), 'std_RMSE': np.float64(0.01349081070850347), 'std_MAE': np.float64(0.007161261919333662), 'std_R2': np.float64(0.008365490852626868)}
+2026-03-28 00:40:37,945 [INFO] Finished run. Outputs saved to C:\Users\Kpand\OneDrive\Desktop\minor_project\outputs
+2026-03-28 00:40:37,974 [INFO] Logging to benchmark_output\logs\benchmark_run_20260327_191037.log
+2026-03-28 00:40:38,021 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:40:38,021 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:40:38,033 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:40:38,034 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:40:38,035 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:40:40,585 [INFO] Cross-region metrics (mean): {'mean_RMSE': np.float64(10.984849585261937), 'mean_MAE': np.float64(8.40091380208283), 'mean_R2': np.float64(0.1523039934429028), 'std_RMSE': np.float64(nan), 'std_MAE': np.float64(nan), 'std_R2': np.float64(nan)}
+2026-03-28 00:40:40,585 [INFO] Finished run. Outputs saved to C:\Users\Kpand\OneDrive\Desktop\minor_project\benchmark_output

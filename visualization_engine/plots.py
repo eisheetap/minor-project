@@ -37,12 +37,12 @@ def plot_error_comparison(errors_a: np.ndarray, errors_b: np.ndarray, labels: Tu
     plt.close()
 
 
-def plot_degradation_bar(labels: List[str], values: List[float], title: str, path: Path) -> None:
+def plot_rmse_bar(labels: List[str], values: List[float], title: str, path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     plt.figure(figsize=(6, 4))
     plt.bar(labels, values)
     plt.title(title)
-    plt.ylabel("Degradation % (RMSE)")
+    plt.ylabel("RMSE")
     plt.tight_layout()
     plt.savefig(path, dpi=200)
     plt.close()

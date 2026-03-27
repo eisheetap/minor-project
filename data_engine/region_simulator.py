@@ -22,40 +22,40 @@ class RegionParams:
 
 
 def get_region_a_params() -> RegionParams:
-    """Semi-arid, hotter, sparse rainfall."""
+    """Semi-arid, hotter, sparse rainfall; soil moisture stays within 20-100."""
     return RegionParams(
         name="A_semi_arid",
         temp_mean=30.0,
-        temp_std=3.0,
-        humidity_base=25.0,
-        humidity_variance=3.0,
-        rainfall_shape=0.8,
-        rainfall_scale=1.0,
-        rainfall_spike_chance=0.02,
-        rainfall_spike_scale=6.0,
-        evap_temp_coeff=0.12,
-        evap_humidity_coeff=0.03,
-        decay_rate=0.06,
-        infiltration_eff=0.55,
+        temp_std=2.5,
+        humidity_base=30.0,
+        humidity_variance=2.5,
+        rainfall_shape=1.0,
+        rainfall_scale=1.2,
+        rainfall_spike_chance=0.03,
+        rainfall_spike_scale=5.0,
+        evap_temp_coeff=0.10,
+        evap_humidity_coeff=0.028,
+        decay_rate=0.05,
+        infiltration_eff=0.5,
     )
 
 
 def get_region_b_params() -> RegionParams:
-    """Humid, cooler, frequent rainfall."""
+    """Humid, cooler, frequent rainfall; soil moisture stays within 20-100."""
     return RegionParams(
         name="B_humid",
-        temp_mean=22.0,
+        temp_mean=24.0,
         temp_std=2.0,
-        humidity_base=65.0,
-        humidity_variance=5.0,
-        rainfall_shape=1.2,
-        rainfall_scale=2.5,
-        rainfall_spike_chance=0.08,
-        rainfall_spike_scale=12.0,
-        evap_temp_coeff=0.08,
-        evap_humidity_coeff=0.025,
-        decay_rate=0.03,
-        infiltration_eff=0.65,
+        humidity_base=60.0,
+        humidity_variance=4.0,
+        rainfall_shape=1.4,
+        rainfall_scale=2.2,
+        rainfall_spike_chance=0.07,
+        rainfall_spike_scale=10.0,
+        evap_temp_coeff=0.07,
+        evap_humidity_coeff=0.022,
+        decay_rate=0.035,
+        infiltration_eff=0.6,
     )
 
 

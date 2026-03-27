@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, Tuple, Optional
 
 import numpy as np
 import torch
@@ -27,6 +27,8 @@ class TrainingResult:
     history: TrainingHistory
     val_metrics: Dict[str, float]
     val_predictions: np.ndarray
+    best_val_loss: Optional[float] = None
+    best_epoch: Optional[int] = None
 
 
 def _build_loaders(X_train: np.ndarray, y_train: np.ndarray, X_val: np.ndarray, y_val: np.ndarray, batch_size: int):
@@ -89,13 +91,18 @@ def train_model(
         lr = train_cfg.get("lr", 1e-3)
         epochs = train_cfg.get("epochs", 25)
         batch_size = train_cfg.get("batch_size", 64)
+        grad_clip = train_cfg.get("grad_clip", 1.0)
+        patience = train_cfg.get("early_stopping_patience", 5)
         model = model.to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
         criterion = nn.MSELoss()
         train_loader, val_loader = _build_loaders(X_train, y_train, X_val, y_val, batch_size)
         losses, val_losses = [], []
+        best_val = float("inf")
+        best_epoch = None
+        stale = 0
 
-        for _ in range(epochs):
+        for epoch in range(epochs):
             model.train()
             epoch_loss = 0.0
             for xb, yb in train_loader:
@@ -104,6 +111,8 @@ def train_model(
                 preds = model(xb).squeeze()
                 loss = criterion(preds, yb)
                 loss.backward()
+                if grad_clip and grad_clip > 0:
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), grad_clip)
                 optimizer.step()
                 epoch_loss += loss.item() * len(xb)
             epoch_loss /= len(train_loader.dataset)
@@ -120,12 +129,23 @@ def train_model(
             val_loss /= len(val_loader.dataset)
             val_losses.append(val_loss)
 
+            if val_loss < best_val - 1e-6:
+                best_val = val_loss
+                best_epoch = epoch
+                stale = 0
+            else:
+                stale += 1
+                if stale >= patience:
+                    break
+
         val_pred = predict_model("lstm", model, X_val, device=device)
         return TrainingResult(
             model=model,
             history=TrainingHistory(losses=losses, val_losses=val_losses),
             val_metrics=regression_metrics(y_val, val_pred),
             val_predictions=val_pred,
+            best_val_loss=best_val,
+            best_epoch=best_epoch,
         )
 
     raise ValueError(f"Unsupported model kind: {kind}")

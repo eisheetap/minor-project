@@ -1,0 +1,7 @@
+2026-03-28 00:24:23,073 [INFO] Logging to benchmark_output\logs\benchmark_run_20260327_185423.log
+2026-03-28 00:24:23,121 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:24:23,121 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:24:23,135 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:24:23,135 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:24:26,251 [INFO] Cross-region metrics (mean): {'mean_RMSE': np.float64(84.6781852743626), 'mean_MAE': np.float64(84.30211420384428), 'mean_R2': np.float64(-85.03613696191573), 'std_RMSE': np.float64(nan), 'std_MAE': np.float64(nan), 'std_R2': np.float64(nan)}
+2026-03-28 00:24:26,252 [INFO] Finished run. Outputs saved to C:\Users\Kpand\OneDrive\Desktop\minor_project\benchmark_output

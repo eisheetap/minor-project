@@ -25,7 +25,7 @@ from training_engine.cross_region_trainer import run_cross_region_training
 from training_engine.reproducibility import set_global_seed
 from transfer_engine.fine_tuning import run_fine_tuning
 from visualization_engine.plots import (
-    plot_degradation_bar,
+    plot_rmse_bar,
     plot_error_comparison,
     plot_feature_distributions,
     plot_predictions,
@@ -39,7 +39,7 @@ def _aggregate_metrics(metric_list: List[Dict[str, float]]) -> Dict[str, float]:
     return {f"mean_{col}": df[col].mean() for col in df.columns} | {f"std_{col}": df[col].std() for col in df.columns}
 
 
-def run_pipeline(config_path: Path, transfer_override: bool | None = None) -> None:
+def run_pipeline(config_path: Path, transfer_override: bool | None = None, min_runs_required: int = 5) -> None:
     cfg = load_config(config_path)
     run_cfg = cfg["run"]
     data_cfg = cfg["data"]
@@ -78,7 +78,7 @@ def run_pipeline(config_path: Path, transfer_override: bool | None = None) -> No
         save_datasets(datasets, Path("DATA"))
 
     eval_runs = eval_cfg.get("runs", 5)
-    ensure_min_runs(list(range(eval_runs)), minimum=5)
+    ensure_min_runs(list(range(eval_runs)), minimum=min_runs_required)
 
     in_metrics_runs: List[Dict[str, float]] = []
     cross_metrics_runs: List[Dict[str, float]] = []
@@ -99,6 +99,8 @@ def run_pipeline(config_path: Path, transfer_override: bool | None = None) -> No
                 "lr": train_cfg.get("lr", 1e-3),
                 "epochs": train_cfg.get("epochs", 25),
                 "batch_size": train_cfg.get("batch_size", 64),
+                "grad_clip": train_cfg.get("grad_clip", 1.0),
+                "early_stopping_patience": train_cfg.get("early_stopping_patience", 5),
             }
 
         cross_result = run_cross_region_training(
@@ -112,6 +114,9 @@ def run_pipeline(config_path: Path, transfer_override: bool | None = None) -> No
             window_size=prep_cfg["window_size"],
             val_ratio=train_cfg.get("val_ratio", 0.15),
             seed=seed,
+            scaling_mode=prep_cfg.get("scaling_mode", "per_region"),
+            tolerance_std=prep_cfg.get("leakage_std_tolerance", 5.0),
+            warn_only=prep_cfg.get("leakage_warn_only", True),
         )
         in_metrics_runs.append(cross_result.in_domain_metrics)
         cross_metrics_runs.append(cross_result.cross_domain_metrics)
@@ -129,6 +134,10 @@ def run_pipeline(config_path: Path, transfer_override: bool | None = None) -> No
                 epochs=transfer_cfg["epochs"],
                 batch_size=transfer_cfg["batch_size"],
                 seed=seed + 999,
+                strategy=transfer_cfg.get("strategy", "full"),
+                base_lr=transfer_cfg.get("base_lr"),
+                head_lr=transfer_cfg.get("head_lr"),
+                grad_clip=transfer_cfg.get("grad_clip", 1.0),
             )
             transfer_metrics_runs.append(transfer_result["metrics"])
             errors_after.append(np.abs(cross_result.region_b.y_test - transfer_result["predictions"]))
@@ -163,11 +172,11 @@ def run_pipeline(config_path: Path, transfer_override: bool | None = None) -> No
         title="Feature distributions: Train vs Target",
         path=plots_dir / "feature_distribution.png",
     )
-    plot_degradation_bar(
-        labels=["Baseline"],
-        values=[cross_table.iloc[0]["Degradation_%"]],
-        title="Cross-domain degradation",
-        path=plots_dir / "degradation_bar.png",
+    plot_rmse_bar(
+        labels=["A→B RMSE"],
+        values=[cross_metrics_runs[0]["RMSE"]],
+        title="Cross-domain RMSE",
+        path=plots_dir / "rmse_bar.png",
     )
 
     transfer_metrics_mean: Dict[str, float] | None = None
@@ -212,14 +221,11 @@ def run_pipeline(config_path: Path, transfer_override: bool | None = None) -> No
         )
         pd.DataFrame.from_dict(robustness_summary, orient="index").to_csv(metrics_dir / "robustness.csv")
 
-        plot_degradation_bar(
-            labels=["Baseline", "Transfer"],
-            values=[
-                cross_table.iloc[0]["Degradation_%"],
-                recovery_rmse * -1,  # visualize recovery as negative degradation
-            ],
-            title="Degradation vs Recovery",
-            path=plots_dir / "degradation_recovery_bar.png",
+        plot_rmse_bar(
+            labels=["A→B", "A→B (TL)"],
+            values=[cross_metrics_runs[0]["RMSE"], transfer_metrics_runs[0]["RMSE"]],
+            title="RMSE before/after transfer",
+            path=plots_dir / "rmse_transfer_bar.png",
         )
 
     # Domain shift summary

@@ -1,0 +1,51 @@
+2026-03-28 00:26:12,635 [INFO] Logging to outputs\logs\baseline_run_20260327_185612.log
+2026-03-28 00:26:13,089 [WARNING] Potential scaling mismatch on feature 'temperature' (>|3.0| std from train).
+2026-03-28 00:26:13,089 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:26:13,089 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:26:13,089 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:26:13,109 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:26:13,110 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:26:13,110 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:26:13,113 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:26:38,273 [WARNING] Potential scaling mismatch on feature 'temperature' (>|3.0| std from train).
+2026-03-28 00:26:38,274 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:26:38,274 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:26:38,277 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:26:38,302 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:26:38,302 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:26:38,302 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:26:38,306 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:27:00,208 [WARNING] Potential scaling mismatch on feature 'temperature' (>|3.0| std from train).
+2026-03-28 00:27:00,209 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:27:00,210 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:27:00,212 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:27:00,237 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:27:00,238 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:27:00,239 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:27:00,240 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:27:21,286 [WARNING] Potential scaling mismatch on feature 'temperature' (>|3.0| std from train).
+2026-03-28 00:27:21,286 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:27:21,287 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:27:21,287 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:27:21,314 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:27:21,314 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:27:21,318 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:27:21,318 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:27:42,358 [WARNING] Potential scaling mismatch on feature 'temperature' (>|3.0| std from train).
+2026-03-28 00:27:42,359 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:27:42,360 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:27:42,361 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:27:42,388 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:27:42,390 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:27:42,391 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|3.0| std from train).
+2026-03-28 00:27:42,392 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|3.0| std from train).
+2026-03-28 00:28:07,384 [INFO] Cross-region metrics (mean): {'mean_RMSE': np.float64(80.00659363242471), 'mean_MAE': np.float64(79.19897409839993), 'mean_R2': np.float64(-48.20144802677085), 'std_RMSE': np.float64(0.030689882810943384), 'std_MAE': np.float64(0.029921041928103135), 'std_R2': np.float64(0.037754305111207774)}
+2026-03-28 00:28:07,384 [INFO] Transfer metrics (mean): {'mean_RMSE': np.float64(56.67711234360913), 'mean_MAE': np.float64(55.51660233416855), 'mean_R2': np.float64(-23.692732867099412), 'std_RMSE': np.float64(0.5038339935025166), 'std_MAE': np.float64(0.514540576640749), 'std_R2': np.float64(0.4369392788863916)}
+2026-03-28 00:28:07,385 [INFO] Finished run. Outputs saved to C:\Users\Kpand\OneDrive\Desktop\minor_project\outputs
+2026-03-28 00:28:07,406 [INFO] Logging to benchmark_output\logs\benchmark_run_20260327_185807.log
+2026-03-28 00:28:07,456 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:28:07,457 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:28:07,464 [WARNING] Potential scaling mismatch on feature 'humidity' (>|3.0| std from train).
+2026-03-28 00:28:07,465 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|3.0| std from train).
+2026-03-28 00:28:10,156 [INFO] Cross-region metrics (mean): {'mean_RMSE': np.float64(84.6781852743626), 'mean_MAE': np.float64(84.30211420384428), 'mean_R2': np.float64(-85.03613696191573), 'std_RMSE': np.float64(nan), 'std_MAE': np.float64(nan), 'std_R2': np.float64(nan)}
+2026-03-28 00:28:10,156 [INFO] Finished run. Outputs saved to C:\Users\Kpand\OneDrive\Desktop\minor_project\benchmark_output

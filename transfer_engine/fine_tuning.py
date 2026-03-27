@@ -18,6 +18,10 @@ def run_fine_tuning(
     epochs: int,
     batch_size: int,
     seed: int,
+    strategy: str = "full",
+    base_lr: float | None = None,
+    head_lr: float | None = None,
+    grad_clip: float = 1.0,
 ) -> Dict:
     """Fine-tune a pretrained LSTM on a slice of Region B and evaluate."""
     ft_size = max(1, int(finetune_fraction * len(region_b_prepared.X_train)))
@@ -41,6 +45,10 @@ def run_fine_tuning(
         batch_size=batch_size,
         freeze_backbone=freeze_backbone,
         seed=seed,
+        strategy=strategy,
+        base_lr=base_lr,
+        head_lr=head_lr,
+        grad_clip=grad_clip,
     )
     preds = predict_model("lstm", model_copy, region_b_prepared.X_test)
     metrics = regression_metrics(region_b_prepared.y_test, preds)

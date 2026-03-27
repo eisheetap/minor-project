@@ -1,8 +1,8 @@
-"""Scaling utilities that fit on training only."""
+"""Scaling utilities that fit on training only, supporting features and targets."""
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable, Tuple
+from typing import Iterable, Optional
 
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -12,21 +12,39 @@ from sklearn.preprocessing import StandardScaler
 class ScaledData:
     train: pd.DataFrame
     test: pd.DataFrame
-    scaler: StandardScaler
+    feature_scaler: StandardScaler
+    target_scaler: Optional[StandardScaler] = None
 
 
-def fit_scaler(train_df: pd.DataFrame, feature_cols: Iterable[str]) -> StandardScaler:
+def fit_scaler(train_df: pd.DataFrame, cols: Iterable[str]) -> StandardScaler:
     scaler = StandardScaler()
-    scaler.fit(train_df[list(feature_cols)])
+    scaler.fit(train_df[list(cols)])
     return scaler
 
 
-def apply_scaler(
+def apply_feature_scaler(
     scaler: StandardScaler, train_df: pd.DataFrame, test_df: pd.DataFrame, feature_cols: Iterable[str]
-) -> ScaledData:
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     cols = list(feature_cols)
     train_scaled = train_df.copy()
     test_scaled = test_df.copy()
     train_scaled[cols] = scaler.transform(train_df[cols])
     test_scaled[cols] = scaler.transform(test_df[cols])
-    return ScaledData(train=train_scaled, test=test_scaled, scaler=scaler)
+    return train_scaled, test_scaled
+
+
+def apply_scalers(
+    feature_scaler: StandardScaler,
+    target_scaler: Optional[StandardScaler],
+    train_df: pd.DataFrame,
+    test_df: pd.DataFrame,
+    feature_cols: Iterable[str],
+    target_col: str,
+) -> ScaledData:
+    train_scaled, test_scaled = apply_feature_scaler(feature_scaler, train_df, test_df, feature_cols)
+
+    if target_scaler:
+        train_scaled[target_col] = target_scaler.transform(train_df[[target_col]])
+        test_scaled[target_col] = target_scaler.transform(test_df[[target_col]])
+
+    return ScaledData(train=train_scaled, test=test_scaled, feature_scaler=feature_scaler, target_scaler=target_scaler)

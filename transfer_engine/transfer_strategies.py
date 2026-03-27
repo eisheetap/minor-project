@@ -31,17 +31,36 @@ def fine_tune_lstm(
     freeze_backbone: bool = False,
     seed: int = 123,
     device: str | None = None,
+    strategy: str = "full",  # full, freeze, differential
+    base_lr: float | None = None,
+    head_lr: float | None = None,
+    grad_clip: float = 1.0,
 ) -> Dict[str, List[float]]:
     set_global_seed(seed)
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
 
-    if freeze_backbone:
+    if strategy == "freeze" or freeze_backbone:
         for name, param in model.named_parameters():
             if "lstm" in name:
                 param.requires_grad = False
 
-    optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
+    if strategy == "differential":
+        base_params = []
+        head_params = []
+        for name, param in model.named_parameters():
+            if "lstm" in name:
+                base_params.append(param)
+            else:
+                head_params.append(param)
+        optimizer = torch.optim.Adam(
+            [
+                {"params": base_params, "lr": base_lr or lr * 0.1},
+                {"params": head_params, "lr": head_lr or lr},
+            ]
+        )
+    else:
+        optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=lr)
     criterion = nn.MSELoss()
     train_loader, val_loader = _build_loaders(X_train, y_train, X_val, y_val, batch_size)
 
@@ -55,6 +74,8 @@ def fine_tune_lstm(
             preds = model(xb).squeeze()
             loss = criterion(preds, yb)
             loss.backward()
+            if grad_clip and grad_clip > 0:
+                torch.nn.utils.clip_grad_norm_(filter(lambda p: p.requires_grad, model.parameters()), grad_clip)
             optimizer.step()
             epoch_loss += loss.item() * len(xb)
         epoch_loss /= len(train_loader.dataset)

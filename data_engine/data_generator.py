@@ -12,6 +12,8 @@ from data_engine.region_simulator import RegionParams, get_region_registry
 GLOBAL_SEED = 123
 FEATURE_COLUMNS = ["temperature", "humidity", "rainfall", "evapotranspiration", "soil_moisture"]
 TARGET_COLUMN = "next_day_soil_moisture"
+SOIL_MIN = 20.0
+SOIL_MAX = 100.0
 
 
 def _seasonal_signal(length: int, amplitude: float, phase: float = 0.0) -> np.ndarray:
@@ -49,12 +51,13 @@ def generate_region_data(region: RegionParams, length: int = 10_000, seed: int =
     evapotranspiration = np.clip(evapotranspiration, 0, None)
 
     soil_moisture = np.zeros(length)
-    soil_moisture[0] = rng.uniform(20, 50)
+    soil_moisture[0] = rng.uniform(SOIL_MIN, (SOIL_MIN + SOIL_MAX) / 2)
     for t in range(1, length):
         recharge = rainfall[t - 1] * region.infiltration_eff
         loss = evapotranspiration[t - 1] + region.decay_rate * soil_moisture[t - 1]
-        soil_moisture[t] = soil_moisture[t - 1] + recharge - loss + rng.normal(0, 0.5)
-        soil_moisture[t] = np.clip(soil_moisture[t], 0, 100)
+        noise = rng.normal(0, 0.8)
+        soil_moisture[t] = soil_moisture[t - 1] + recharge - loss + noise
+        soil_moisture[t] = np.clip(soil_moisture[t], SOIL_MIN, SOIL_MAX)
 
     df = pd.DataFrame(
         {

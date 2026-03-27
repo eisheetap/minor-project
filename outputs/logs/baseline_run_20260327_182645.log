@@ -1,0 +1,21 @@
+2026-03-27 23:56:45,176 [INFO] Logging to outputs\logs\baseline_run_20260327_182645.log
+2026-03-27 23:56:45,524 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:56:45,525 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|5.0| std from train).
+2026-03-27 23:56:45,539 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:56:45,540 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|5.0| std from train).
+2026-03-27 23:57:03,552 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:03,554 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|5.0| std from train).
+2026-03-27 23:57:03,579 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:03,580 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|5.0| std from train).
+2026-03-27 23:57:19,787 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:19,789 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|5.0| std from train).
+2026-03-27 23:57:19,811 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:19,812 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|5.0| std from train).
+2026-03-27 23:57:36,805 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:36,807 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|5.0| std from train).
+2026-03-27 23:57:36,827 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:36,828 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|5.0| std from train).
+2026-03-27 23:57:52,926 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:52,927 [WARNING] Potential scaling mismatch on feature 'soil_moisture' (>|5.0| std from train).
+2026-03-27 23:57:52,954 [WARNING] Potential scaling mismatch on feature 'rainfall' (>|5.0| std from train).
+2026-03-27 23:57:52,955 [WARNING] Potential scaling mismatch on feature 'evapotranspiration' (>|5.0| std from train).

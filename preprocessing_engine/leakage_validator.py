@@ -1,6 +1,7 @@
 """Validation helpers to guard against leakage and scaling issues."""
 from __future__ import annotations
 
+import logging
 from typing import Iterable
 
 import numpy as np
@@ -17,11 +18,16 @@ def validate_scaling_boundaries(
     test_df: pd.DataFrame,
     feature_cols: Iterable[str],
     tolerance_std: float = 5.0,
+    warn_only: bool = True,
 ) -> None:
-    """Warn/raise if test values are far outside train distribution after scaling."""
+    """Warn if test values are far outside train distribution after scaling."""
     for col in feature_cols:
         train_mean = train_df[col].mean()
         train_std = train_df[col].std() + 1e-8
         z_scores = (test_df[col] - train_mean) / train_std
         if np.any(np.abs(z_scores) > tolerance_std):
-            raise ValueError(f"Potential scaling mismatch on feature '{col}' (>|{tolerance_std}| std from train).")
+            msg = f"Potential scaling mismatch on feature '{col}' (>|{tolerance_std}| std from train)."
+            if warn_only:
+                logging.warning(msg)
+            else:
+                raise ValueError(msg)

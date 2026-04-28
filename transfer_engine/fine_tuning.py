@@ -1,4 +1,15 @@
-"""Fine-tuning orchestration on target region."""
+"""High-level transfer orchestration for adapting source-trained models to Region B.
+
+Purpose:
+- Creates target fine-tuning split, clones source model, applies selected fine-tuning
+  strategy, and evaluates adapted model on target test windows.
+
+Inputs:
+- Source-trained model, prepared Region-B dataset bundle, transfer hyperparameters.
+
+Outputs:
+- Dictionary containing adapted model, fine-tuning history, target predictions, and metrics.
+"""
 from __future__ import annotations
 
 from copy import deepcopy

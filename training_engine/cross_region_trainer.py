@@ -1,4 +1,16 @@
-"""Cross-region training and evaluation orchestration."""
+"""Core cross-region experiment executor (train on A, evaluate on A/B).
+
+Purpose:
+- Orchestrates temporal splitting, leakage-safe scaling, sequence generation, model
+  training, in-domain testing, cross-domain testing, and drift quantification.
+
+Inputs:
+- Region datasets, model specification, preprocessing/training hyperparameters, and seed.
+
+Outputs:
+- ``CrossRegionResult`` containing prepared region tensors, metrics, predictions,
+  domain-shift summaries, and fitted scalers for both regions.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

@@ -1,4 +1,15 @@
-"""Factory for creating models from config."""
+"""Configuration-driven model specification builder for the pipeline.
+
+Purpose:
+- Converts YAML model settings into a uniform ``ModelSpec`` abstraction across
+  RF/Linear/LSTM model families.
+
+Inputs:
+- Model config dictionary and input feature dimension.
+
+Outputs:
+- ``ModelSpec`` containing model kind, initialized model (when needed), and training config.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

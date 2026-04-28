@@ -1,4 +1,15 @@
-"""Reproducibility helpers."""
+"""Determinism utilities for consistent experimental behavior across runs.
+
+Purpose:
+- Sets aligned random seeds for Python, NumPy, and PyTorch (CPU/GPU) and configures
+  deterministic backend behavior where possible.
+
+Inputs:
+- Integer seed from run configuration.
+
+Outputs:
+- Process-level RNG/backend state updates that make training/evaluation reproducible.
+"""
 from __future__ import annotations
 
 import os

@@ -1,4 +1,16 @@
-"""Generic training helpers for baselines and LSTM."""
+"""Unified training/prediction engine across baseline and deep models.
+
+Purpose:
+- Trains RF/Linear/LSTM models using a common interface and returns metrics/history
+  required by downstream evaluation and reporting.
+
+Inputs:
+- Model kind, initialized model/config, train/validation arrays, and reproducibility seed.
+
+Outputs:
+- ``TrainingResult`` with trained model, validation predictions, metrics, and (for LSTM)
+  optimization history/early-stopping details.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

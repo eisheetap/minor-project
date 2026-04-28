@@ -1,4 +1,16 @@
-"""Entry point for research-grade domain-shift pipeline."""
+"""Top-level CLI entry for the full domain-shift experiment pipeline.
+
+Purpose:
+- Launches the end-to-end workflow (data -> preprocessing -> training -> evaluation -> reporting).
+
+Inputs:
+- CLI argument ``--config`` pointing to YAML configuration.
+- Optional ``--skip-benchmarks`` flag.
+
+Outputs:
+- Delegates creation of metrics, plots, logs, and reports under configured output folders.
+- Optionally triggers benchmark artifacts under benchmark output paths.
+"""
 from __future__ import annotations
 
 import argparse

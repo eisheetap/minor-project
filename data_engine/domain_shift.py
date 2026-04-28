@@ -1,4 +1,14 @@
-"""Domain shift quantification utilities."""
+"""Feature-distribution drift analysis utilities between source and target regions.
+
+Purpose:
+- Quantifies domain shift using mean/variance statistics and KL-divergence proxies.
+
+Inputs:
+- Two region DataFrames (source and target) and the list of feature columns to compare.
+
+Outputs:
+- Per-feature shift summary table and aggregate drift score used by evaluation/reporting.
+"""
 from __future__ import annotations
 
 from typing import Dict, Iterable

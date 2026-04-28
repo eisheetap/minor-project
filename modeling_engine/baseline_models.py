@@ -1,4 +1,15 @@
-"""Baseline models (RandomForest, Linear Regression)."""
+"""Classical baseline regressors for cross-domain comparison experiments.
+
+Purpose:
+- Provides Random Forest and Linear Regression training/prediction helpers to benchmark
+  against the LSTM transfer-learning path.
+
+Inputs:
+- Sequence arrays (optionally 3D), training targets, and model-specific configs.
+
+Outputs:
+- Trained sklearn model objects and predicted target vectors.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

@@ -1,4 +1,15 @@
-"""Cross-region performance matrix construction."""
+"""Cross-region score table builder for reporting and CSV export.
+
+Purpose:
+- Builds a standardized one-row performance matrix for train-region vs test-region
+  evaluation with explicit degradation annotation.
+
+Inputs:
+- Train/test region labels and in-domain/cross-domain metric dictionaries.
+
+Outputs:
+- Pandas DataFrame row used in outputs/metrics and markdown reports.
+"""
 from __future__ import annotations
 
 from typing import Dict

@@ -1,4 +1,15 @@
-"""Run baseline cross-region experiment without transfer learning."""
+"""CLI wrapper that executes baseline cross-region evaluation only.
+
+Purpose:
+- Runs the main pipeline while explicitly disabling transfer adaptation to establish
+  a pure cross-domain baseline.
+
+Inputs:
+- CLI config path argument.
+
+Outputs:
+- Baseline metrics/plots/report artifacts without fine-tuning outputs.
+"""
 from __future__ import annotations
 
 import argparse

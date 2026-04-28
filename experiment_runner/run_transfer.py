@@ -1,4 +1,15 @@
-"""Run cross-region experiment with transfer learning enabled."""
+"""CLI wrapper that executes the pipeline with transfer learning forced on.
+
+Purpose:
+- Provides a convenient entrypoint for transfer-enabled experiments regardless of
+  default config transfer toggles.
+
+Inputs:
+- CLI config path argument.
+
+Outputs:
+- Same artifact set as full runner, with transfer stage guaranteed to execute.
+"""
 from __future__ import annotations
 
 import argparse

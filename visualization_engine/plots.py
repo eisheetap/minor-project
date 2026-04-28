@@ -1,4 +1,16 @@
-"""Centralized plotting utilities."""
+"""Plot generation utilities for metrics, predictions, and distribution diagnostics.
+
+Purpose:
+- Centralizes all figure creation used by experiment runners to ensure consistent
+  visual style and artifact locations.
+
+Inputs:
+- Metric values, prediction arrays, loss histories, and feature DataFrames from
+  training/evaluation stages.
+
+Outputs:
+- PNG figures written to configured plot directories.
+"""
 from __future__ import annotations
 
 from pathlib import Path

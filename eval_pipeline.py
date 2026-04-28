@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
-"""
-Standalone evaluation pipeline for cross-domain transfer learning results.
-Provide arrays via run_evaluation(inputs).
+"""Standalone post-training evaluation utility for transfer-learning experiments.
+
+Purpose:
+- Computes summary metrics and generates publication-friendly tables and plots
+  from already available prediction/error arrays.
+
+Inputs:
+- ``run_evaluation(inputs)`` expects baseline/transfer RMSE runs, per-sample errors,
+  and true/predicted arrays for both baseline and transfer settings.
+- Optional training and validation loss arrays for curve plotting.
+
+Outputs:
+- Writes ``results_table.csv``, ``results_table.md`` and multiple PNG figures.
+- Returns a dictionary containing computed metrics, generated table, output file list,
+  and interpretation text.
 """
 from __future__ import annotations
 

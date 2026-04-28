@@ -1,4 +1,15 @@
-"""Robustness checks via noise and missingness."""
+"""Stress-test utilities to evaluate model robustness under degraded inputs.
+
+Purpose:
+- Perturbs test windows using additive noise and simulated missing values, then
+  re-evaluates model performance under these shifts.
+
+Inputs:
+- Trained model, clean test arrays, and perturbation strengths from evaluation config.
+
+Outputs:
+- Scenario-wise metric dictionaries (noisy/missing) for robustness reporting.
+"""
 from __future__ import annotations
 
 from typing import Dict

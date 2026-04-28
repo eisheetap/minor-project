@@ -1,4 +1,18 @@
-"""Data generation and loading API for synthetic and external regions."""
+"""Data ingestion/generation layer for region-wise pipeline inputs.
+
+Purpose:
+- Generates synthetic agro-climatic time-series for multiple regions or loads
+  external region files with the required schema.
+
+Inputs:
+- Region parameter definitions, random seeds, sequence length, and optional external
+  CSV/JSON paths defined by configuration.
+
+Outputs:
+- In-memory pandas DataFrames for regions (typically keys ``A`` and ``B``) containing
+  feature columns and next-day target.
+- Optional persisted region CSV/JSON files for traceability/debugging.
+"""
 from __future__ import annotations
 
 from pathlib import Path

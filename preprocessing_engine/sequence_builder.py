@@ -1,4 +1,15 @@
-"""Sliding-window sequence creation."""
+"""Sequence construction for temporal supervised learning.
+
+Purpose:
+- Converts tabular time-series rows into fixed-length sliding windows suitable for
+  sequence models and flattened baselines.
+
+Inputs:
+- Preprocessed DataFrame, selected feature columns, target column, and window size.
+
+Outputs:
+- ``X`` tensor/array of windows and aligned ``y`` target vector.
+"""
 from __future__ import annotations
 
 from typing import Iterable, Tuple

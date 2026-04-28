@@ -1,4 +1,16 @@
-"""Lightweight benchmark runner that executes a fast config and writes outputs to benchmark_output."""
+"""Fast benchmark harness for smoke-testing full pipeline health.
+
+Purpose:
+- Generates a compact deterministic config and executes a minimal run to validate
+  end-to-end pipeline integrity and runtime sanity.
+
+Inputs:
+- Base experiment config path (optionally overridden by caller).
+
+Outputs:
+- Benchmark config, metrics/plots/logs, and benchmark summary YAML under
+  ``benchmark_output``.
+"""
 from __future__ import annotations
 
 import time

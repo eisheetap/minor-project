@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
-"""
-Lightweight auto-evaluation that reads metrics produced by main.py and emits
-comparison tables and a concise summary. This does NOT require supplying arrays
-manually; it uses the CSVs generated in outputs/metrics.
+"""Automatic evaluator that summarizes already-generated experiment metrics.
+
+Purpose:
+- Reads metric CSVs from a prior pipeline run and builds compact comparison tables
+  without re-running model training/inference.
+
+Inputs:
+- ``outputs/metrics/cross_region_matrix.csv`` and ``outputs/metrics/transfer_metrics.csv``.
+
+Outputs:
+- Writes ``outputs/metrics/auto_results_table.csv`` and ``auto_results_table.md``.
+- Prints concise recovery summary for quick validation.
 """
 from __future__ import annotations
 

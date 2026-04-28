@@ -1,4 +1,16 @@
-"""Full pipeline: baseline + transfer + stats + robustness."""
+"""Primary orchestration module for the complete experimental pipeline.
+
+Purpose:
+- Coordinates config loading, dataset preparation, repeated runs, model training,
+  transfer adaptation, statistical tests, robustness checks, visualization, and reporting.
+
+Inputs:
+- YAML config path and optional transfer override from CLI/wrapper scripts.
+
+Outputs:
+- Persisted metrics tables, plots, logs, and markdown report in configured directories.
+- Console/log summaries describing aggregated baseline and transfer behavior.
+"""
 from __future__ import annotations
 
 import argparse

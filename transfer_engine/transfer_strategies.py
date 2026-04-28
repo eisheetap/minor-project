@@ -1,4 +1,16 @@
-"""Transfer learning strategies for LSTM models."""
+"""Fine-tuning strategy implementations for target-region adaptation.
+
+Purpose:
+- Implements full-model tuning, frozen-backbone tuning, and differential-learning-rate
+  adaptation for pretrained LSTM models.
+
+Inputs:
+- Pretrained model, target-region train/validation arrays, optimization hyperparameters,
+  selected transfer strategy, and seed.
+
+Outputs:
+- Training/validation loss history describing adaptation dynamics on target data.
+"""
 from __future__ import annotations
 
 from typing import Dict, List

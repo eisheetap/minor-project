@@ -1,4 +1,14 @@
-"""LSTM architecture for sequence regression."""
+"""Neural sequence regressor used as the primary transferable model.
+
+Purpose:
+- Defines an LSTM-based regression architecture for next-step soil-moisture prediction.
+
+Inputs:
+- Batched time-window tensors of shape ``[batch, window, features]`` from preprocessing.
+
+Outputs:
+- Single-value prediction per sequence, consumed by training/evaluation modules.
+"""
 from __future__ import annotations
 
 import torch

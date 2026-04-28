@@ -1,4 +1,15 @@
-"""Validation helpers to guard against leakage and scaling issues."""
+"""Data-quality guards for temporal leakage and distribution-bound violations.
+
+Purpose:
+- Validates that preprocessing preserves chronological integrity and flags extreme
+  train/test scaling mismatches.
+
+Inputs:
+- Train/test DataFrames and feature list from preprocessing stage.
+
+Outputs:
+- Raises validation errors (or warnings) used to hard-stop or monitor risky runs.
+"""
 from __future__ import annotations
 
 import logging

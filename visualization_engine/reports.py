@@ -1,4 +1,15 @@
-"""Generate text/markdown reports."""
+"""Markdown report writer that consolidates experiment outcomes.
+
+Purpose:
+- Converts cross-region, transfer, statistical, and robustness outputs into a
+  single human-readable markdown report.
+
+Inputs:
+- Run metadata plus DataFrame/dictionary summaries produced during evaluation.
+
+Outputs:
+- Markdown report file saved to configured output path.
+"""
 from __future__ import annotations
 
 from pathlib import Path

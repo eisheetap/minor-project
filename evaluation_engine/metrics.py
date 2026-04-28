@@ -1,4 +1,14 @@
-"""Regression metrics and helpers."""
+"""Evaluation metric primitives for domain-shift and transfer analysis.
+
+Purpose:
+- Computes core regression metrics and helper percentages for degradation/recovery.
+
+Inputs:
+- Ground-truth and predicted target arrays or scalar metric values.
+
+Outputs:
+- Numeric metric dictionaries and percentage indicators consumed by reports/plots.
+"""
 from __future__ import annotations
 
 from typing import Dict

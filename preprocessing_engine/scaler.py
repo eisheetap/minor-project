@@ -1,4 +1,15 @@
-"""Scaling utilities that fit on training only, supporting features and targets."""
+"""Feature/target normalization helpers with train-only fitting semantics.
+
+Purpose:
+- Applies standardization to features (and optionally target) while preventing
+  test-set information leakage into scaler fitting.
+
+Inputs:
+- Train/test DataFrames, selected feature columns, target column, and fitted/fit-able scalers.
+
+Outputs:
+- Scaled train/test DataFrames plus scaler objects bundled in ``ScaledData``.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

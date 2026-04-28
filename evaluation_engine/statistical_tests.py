@@ -1,4 +1,15 @@
-"""Statistical testing utilities."""
+"""Statistical significance helpers for multi-run experiment comparison.
+
+Purpose:
+- Provides paired tests and summary statistics to quantify whether transfer
+  improvements over baseline are statistically meaningful.
+
+Inputs:
+- Run-wise metric/error lists or paired error arrays from baseline and transfer runs.
+
+Outputs:
+- t-statistics, p-values, and aggregate descriptors used in evaluation artifacts.
+"""
 from __future__ import annotations
 
 from typing import Dict, Iterable, List, Tuple

@@ -1,4 +1,14 @@
-"""Time-based train/test splits."""
+"""Temporal data partitioning utilities for leakage-safe model validation.
+
+Purpose:
+- Splits a region dataset into chronological train/test partitions.
+
+Inputs:
+- Region DataFrame with ``timestamp`` column and configured train ratio.
+
+Outputs:
+- ``SplitResult`` containing train and test DataFrames with strict temporal ordering.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

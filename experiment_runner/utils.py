@@ -1,4 +1,14 @@
-"""Common utilities for experiment runners."""
+"""Shared runner utilities for configuration, logging, and output setup.
+
+Purpose:
+- Provides reusable helpers that keep runner scripts minimal and consistent.
+
+Inputs:
+- Config file paths, run names, and directory paths from runner modules.
+
+Outputs:
+- Parsed config dictionaries, initialized logging targets, and created output folders.
+"""
 from __future__ import annotations
 
 import logging

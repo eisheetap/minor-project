@@ -1,4 +1,15 @@
-"""Region parameterization for synthetic agro-climatic data."""
+"""Canonical synthetic region definitions used by the data-generation stage.
+
+Purpose:
+- Encapsulates physically motivated region parameters that drive synthetic climate
+  and soil-moisture behavior.
+
+Inputs:
+- No runtime external input; parameters are hardcoded as defaults for regions A/B.
+
+Outputs:
+- ``RegionParams`` objects and a registry consumed by ``data_generator``.
+"""
 from __future__ import annotations
 
 from dataclasses import dataclass

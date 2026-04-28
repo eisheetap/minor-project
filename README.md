@@ -57,7 +57,7 @@ Evaluation + Visualization + Reports
   - plots + markdown report + CSV artifacts
 ```
 
-Evaluation Metrics (Full Forms, Why, Where)
+Evaluation Metrics 
 --------------------------------------------
 This project uses multiple metrics because no single metric fully captures transfer-learning behavior under domain shift.
 
